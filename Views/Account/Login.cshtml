@@ -1,0 +1,78 @@
+﻿@using RunGroupWebApp.ViewModels;
+@model LoginViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            .form-signin .form-control:focus {
+                z-index: 2;
+            }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+</style>
+
+<div class="text-center">
+    <form asp-action="Login" class="form-signin">
+        <img class="mb-4" src="/docs/4.6/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Sign in to your account</h1>
+        @if(TempData["Error"] != null)
+        {
+            <div class="col-md-12 alert alert-danger">
+                <span><b>Sorry!</b> - @TempData["Error"]</span>
+            </div>
+        }
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <a class="btn btn-outline-secondary" asp-controller="Club" asp-action="Index">Cancel</a>
+    </form>
+</div>
