@@ -87,7 +87,7 @@ namespace RunGroupWebApp.Controllers
             if(newUserResponse.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-                return View("Login");
+                return RedirectToAction("Index", "Race");
             }
 
             return View(registerVM);
